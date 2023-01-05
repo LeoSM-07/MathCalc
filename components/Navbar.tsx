@@ -1,26 +1,39 @@
-import { Navbar, Button, Dropdown, Text } from "@nextui-org/react";
+import React from "react";
+import { Navbar, Button, Dropdown, Text, Switch, useTheme } from "@nextui-org/react";
+import { useTheme as useNextTheme } from "next-themes";
+
+interface DropdownProps {
+  selection: string;
+}
 
 export default function NavbarItem() {
+  const [selection, setSelection] = React.useState("Hello World");
+  const { setTheme } = useNextTheme();
+  const { isDark, type } = useTheme();
+
   return (
-    <Navbar maxWidth={"lg"} variant={"floating"}>
+    <Navbar maxWidth={"lg"} variant={"floating"} shouldHideOnScroll>
       <Navbar.Content>
         <Navbar.Brand>
           <Text b>MathCalc</Text>
         </Navbar.Brand>
         <Navbar.Item>
-          <PhysicsDropdown />
+          <PhysicsDropdown selection={selection} />
         </Navbar.Item>
         <Navbar.Item>
           <MathDropdown />
         </Navbar.Item>
       </Navbar.Content>
       <Navbar.Content>
-        <Navbar.Link color="inherit" href="#">
-          Login
-        </Navbar.Link>
+        <Navbar.Item>
+          <Switch
+            checked={isDark}
+            onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+          />
+        </Navbar.Item>
         <Navbar.Item>
           <Button auto flat href="#">
-            Sign Up
+            {type}
           </Button>
         </Navbar.Item>
       </Navbar.Content>
@@ -28,7 +41,14 @@ export default function NavbarItem() {
   );
 }
 
-function PhysicsDropdown() {
+function PhysicsDropdown({ selection }: DropdownProps) {
+  const [selected, setSelected] = React.useState(new Set(["text"]));
+
+  const selectedValue = React.useMemo(
+    () => Array.from(selected).join(", ").replaceAll("_", " "),
+    [selected]
+  );
+
   return (
     <Dropdown isBordered>
       <Dropdown.Button
@@ -62,6 +82,13 @@ function PhysicsDropdown() {
 }
 
 function MathDropdown() {
+  const [selected, setSelected] = React.useState(new Set(["text"]));
+
+  const selectedValue = React.useMemo(
+    () => Array.from(selected).join(", ").replaceAll("_", " "),
+    [selected]
+  );
+
   return (
     <Dropdown isBordered>
       <Dropdown.Button
@@ -76,7 +103,7 @@ function MathDropdown() {
       >
         Math
       </Dropdown.Button>
-      <Dropdown.Menu aria-label="Static Actions">
+      <Dropdown.Menu>
         <Dropdown.Section title={"Derivatives"}>
           <Dropdown.Item key="placeholder4">To add</Dropdown.Item>
           <Dropdown.Item key="placeholder5">To add</Dropdown.Item>
