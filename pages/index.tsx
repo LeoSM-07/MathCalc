@@ -52,9 +52,9 @@ function ProjectileMotion() {
     <Container gap={1}>
       <Row>
         <Col className={styles.maths}>
-          <Mafs >
+          {/* <Mafs >
             <CartesianCoordinates subdivisions={4} />
-          </Mafs>
+          </Mafs> */}
         </Col>
         <Spacer x={1} />
         <Col>
