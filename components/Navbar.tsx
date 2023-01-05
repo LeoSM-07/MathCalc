@@ -31,7 +31,7 @@ export default function NavbarItem() {
             onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
           />
         </Navbar.Item>
-        <Navbar.Item>
+        <Navbar.Item hideIn={"xs"}>
           <Button auto flat href="#">
             {type}
           </Button>
