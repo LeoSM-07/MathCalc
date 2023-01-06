@@ -7,7 +7,7 @@
   font-family: inherit;
   font-variant-numeric: tabular-nums;
 
-  --mafs-bg: black;
+  --mafs-bg: #16181a;
   --mafs-fg: white;
 
   --mafs-origin-color: var(--mafs-fg);
@@ -32,8 +32,6 @@
   user-select: none;
   font-family: inherit;
   font-variant-numeric: tabular-nums;
-  touch-action: none;
-  outline: 0;
 
   --mafs-bg: white;
   --mafs-fg: black;

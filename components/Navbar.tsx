@@ -1,5 +1,12 @@
 import React from "react";
-import { Navbar, Button, Dropdown, Text, Switch, useTheme } from "@nextui-org/react";
+import {
+  Navbar,
+  Button,
+  Dropdown,
+  Text,
+  Switch,
+  useTheme,
+} from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
 
 interface DropdownProps {
@@ -12,7 +19,7 @@ export default function NavbarItem() {
   const { isDark, type } = useTheme();
 
   return (
-    <Navbar maxWidth={"lg"} variant={"floating"} shouldHideOnScroll>
+    <Navbar maxWidth={"lg"} variant={"sticky"} shouldHideOnScroll={false}>
       <Navbar.Content>
         <Navbar.Brand>
           <Text b>MathCalc</Text>
@@ -31,11 +38,15 @@ export default function NavbarItem() {
             onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
           />
         </Navbar.Item>
-        <Navbar.Item hideIn={"xs"}>
-          <Button auto flat href="#">
-            {type}
-          </Button>
-        </Navbar.Item>
+        <Navbar.Link
+          hideIn={"xs"}
+          href="https://github.com/LeoSM-07/MathCalc"
+          isExternal
+          underline
+          color={"primary"}
+        >
+          Github
+        </Navbar.Link>
       </Navbar.Content>
     </Navbar>
   );
