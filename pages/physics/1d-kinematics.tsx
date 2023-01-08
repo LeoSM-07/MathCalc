@@ -1,7 +1,3 @@
 export default function OneDKinematics() {
-    return (
-        <div>
-
-        </div>
-    )
+  return <div></div>;
 }

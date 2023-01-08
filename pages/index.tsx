@@ -40,9 +40,13 @@ function HomeBody() {
       <Head>
         <title>MathCalc</title>
       </Head>
-      <div style={{display: "flex"}}>
-        <Text h1 style={{marginInlineEnd: "0.5rem"}}>Welcome to</Text>
-        <Text h1 color={"primary"}>MathCalc</Text>
+      <div style={{ display: "flex" }}>
+        <Text h1 style={{ marginInlineEnd: "0.5rem" }}>
+          Welcome to
+        </Text>
+        <Text h1 color={"primary"}>
+          MathCalc
+        </Text>
       </div>
       <Card>
         <Card.Body>

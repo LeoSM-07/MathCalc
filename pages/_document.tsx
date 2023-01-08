@@ -5,9 +5,7 @@ export default function Document() {
   const { theme } = useTheme();
   return (
     <Html lang="en">
-      <Head>
-        {CssBaseline.flush()}
-      </Head>
+      <Head>{CssBaseline.flush()}</Head>
       <body>
         <Main />
         <NextScript />

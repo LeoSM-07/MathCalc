@@ -32,8 +32,8 @@ export default function NavbarItem() {
     router.push(`/${key.valueOf()}`);
   };
   const goHome = () => {
-    router.push(`/`)
-  }
+    router.push(`/`);
+  };
 
   return (
     <Navbar maxWidth={"lg"} variant={"sticky"} shouldHideOnScroll={false}>
@@ -138,8 +138,8 @@ function MathDropdown({ action }: DropdownProps) {
         Math
       </Dropdown.Button>
       <Dropdown.Menu disabledKeys={disabledKeys} onAction={action}>
-        <Dropdown.Section title={"Derivatives"}>
-          <Dropdown.Item key="placeholder4">To add</Dropdown.Item>
+        <Dropdown.Section title={"Calculus"}>
+          <Dropdown.Item key="math/derivative">Derivative</Dropdown.Item>
           <Dropdown.Item key="placeholder5">To add</Dropdown.Item>
           <Dropdown.Item key="placeholder6">To add</Dropdown.Item>
         </Dropdown.Section>
