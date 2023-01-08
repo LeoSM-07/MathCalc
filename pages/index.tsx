@@ -1,10 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
 import { Button, Text, Card } from "@nextui-org/react";
-import NavbarItem from "../components/Navbar";
-import ProjectileMotion from "./physics/projectile-motion";
-
-const Component = () => <Button>Click me</Button>;
 
 export default function Home() {
   const [mounted, setMounted] = React.useState(false);

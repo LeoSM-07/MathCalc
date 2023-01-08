@@ -140,10 +140,10 @@ function MathDropdown({ action }: DropdownProps) {
       <Dropdown.Menu disabledKeys={disabledKeys} onAction={action}>
         <Dropdown.Section title={"Calculus"}>
           <Dropdown.Item key="math/derivative">Derivative</Dropdown.Item>
-          <Dropdown.Item key="placeholder5">To add</Dropdown.Item>
+          <Dropdown.Item key="math/integral">Integral</Dropdown.Item>
           <Dropdown.Item key="placeholder6">To add</Dropdown.Item>
         </Dropdown.Section>
-        <Dropdown.Section title={"Integrals"}>
+        <Dropdown.Section title={"Algebra"}>
           <Dropdown.Item key="placeholder1">To add</Dropdown.Item>
           <Dropdown.Item key="placeholder2">To add</Dropdown.Item>
           <Dropdown.Item key="placeholder3">To add</Dropdown.Item>

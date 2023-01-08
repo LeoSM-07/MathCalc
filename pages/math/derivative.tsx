@@ -22,7 +22,14 @@ import {
 } from "mafs";
 import * as math from "mathjs";
 import Head from "next/head";
+import dynamic from 'next/dynamic'
+import React, { useState } from 'react'
 
+const MathField = dynamic(() => import('../../components/Math/MathField'), {
+  ssr: false,
+})
+
+import { parseTex, evaluateTex } from "tex-math-parser";
 export default function Derivative() {
   return (
     <>
@@ -45,7 +52,7 @@ export default function Derivative() {
 }
 
 function DerivativeBody() {
-  const { type, theme } = useTheme();
+  const { type } = useTheme();
 
   const originalFunction = (x: number) => {
     return math.sin(x);
@@ -55,15 +62,19 @@ function DerivativeBody() {
     return math.derivative("sin(x)", "x").evaluate({ x: x });
   };
 
-  const c = useMovablePoint([Math.PI / 2, 0], {
+  const c = useMovablePoint([Math.PI/2, 1], {
     constrain: "horizontal",
     color: `${Theme.orange}`,
   });
 
   const point: Vector2 = [c.x, originalFunction(c.x)];
 
+  // Raw Input Equation
+  const [rawInputEquation, setRawInputEquation] = useState("\\sin(x)")
+  // 
+  
   return (
-    <Container>
+    <Container display={"grid"}>
       <Row gap={0}>
         <Col data-theme={type}>
           <Card variant={"shadow"}>
@@ -82,11 +93,6 @@ function DerivativeBody() {
                   }}
                 />
                 <FunctionGraph.OfX y={originalFunction} color={Theme.blue} />
-                {/*
-                <FunctionGraph.OfX
-                  y={derivative}
-                  color={theme?.colors.secondary.value}
-                /> */}
                 {c.element}
                 <Point x={point[0]} y={point[1]} color={Theme.orange} />
                 <Line.PointSlope
@@ -107,10 +113,11 @@ function DerivativeBody() {
             </Card.Footer>
           </Card>
         </Col>
-        <Spacer x={3}/>
+        <Spacer x={3} />
         <Col>
           <Text h2>Inputs:</Text>
-          <Text>Hello World</Text>
+          <MathField text={rawInputEquation} setText={setRawInputEquation} prompt={"f(x) ="} />
+          <Text>Raw Latex: {rawInputEquation}</Text>
           <Spacer y={2} />
           <Text h2>Outputs:</Text>
           <Text>Hello World</Text>
@@ -119,6 +126,7 @@ function DerivativeBody() {
     </Container>
   );
 }
+
 
 function ExplanationSection() {
   return (
