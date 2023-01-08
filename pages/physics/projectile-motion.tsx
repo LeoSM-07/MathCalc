@@ -11,11 +11,15 @@ import {
 } from "@nextui-org/react";
 import { Mafs, CartesianCoordinates } from "mafs";
 import styles from "../../styles/Home.module.css";
-import { Fragment} from "react";
+import Head from "next/head";
+import { Fragment } from "react";
 
 export default function ProjectileMotion() {
   return (
     <Fragment>
+      <Head>
+        <title>Projectile Motion</title>
+      </Head>
       <Text h2>Projectile Motion Calculator</Text>
       <Card>
         <Card.Body>

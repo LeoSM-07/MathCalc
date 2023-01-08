@@ -8,32 +8,48 @@ import {
   useTheme,
 } from "@nextui-org/react";
 import { useTheme as useNextTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 interface DropdownProps {
-  selection: string;
+  action: (key: React.Key) => void;
 }
 
+const disabledKeys = [
+  "placeholder1",
+  "placeholder2",
+  "placeholder3",
+  "placeholder4",
+  "placeholder5",
+  "placeholder6",
+];
+
 export default function NavbarItem() {
-  const [selection, setSelection] = React.useState("Hello World");
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
+
+  const router = useRouter();
+  const handleAction = (key: React.Key) => {
+    router.push(`/${key.valueOf()}`);
+  };
+  const goHome = () => {
+    router.push(`/`)
+  }
 
   return (
     <Navbar maxWidth={"lg"} variant={"sticky"} shouldHideOnScroll={false}>
       <Navbar.Content>
-        <Navbar.Brand>
-          <Text
-            weight={"extrabold"}
-            color={"primary"}
-          >
-            MathCalc
-          </Text>
-        </Navbar.Brand>
         <Navbar.Item>
-          <PhysicsDropdown selection={selection} />
+          <Button light color="primary" auto onClick={goHome}>
+            <Text weight={"extrabold"} color="primary">
+              MathCalc
+            </Text>
+          </Button>
         </Navbar.Item>
         <Navbar.Item>
-          <MathDropdown />
+          <PhysicsDropdown action={handleAction} />
+        </Navbar.Item>
+        <Navbar.Item>
+          <MathDropdown action={handleAction} />
         </Navbar.Item>
       </Navbar.Content>
       <Navbar.Content>
@@ -59,9 +75,8 @@ export default function NavbarItem() {
   );
 }
 
-function PhysicsDropdown({ selection }: DropdownProps) {
+function PhysicsDropdown({ action }: DropdownProps) {
   const [selected, setSelected] = React.useState(new Set(["text"]));
-
   const selectedValue = React.useMemo(
     () => Array.from(selected).join(", ").replaceAll("_", " "),
     [selected]
@@ -81,13 +96,21 @@ function PhysicsDropdown({ selection }: DropdownProps) {
       >
         Physics
       </Dropdown.Button>
-      <Dropdown.Menu aria-label="Static Actions">
+      <Dropdown.Menu
+        aria-label="Static Actions"
+        disabledKeys={disabledKeys}
+        onAction={action}
+      >
         <Dropdown.Section title={"Kinematics"}>
-          <Dropdown.Item key="projectileMotion">
+          <Dropdown.Item key="physics/projectile-motion">
             Projectile Motion
           </Dropdown.Item>
-          <Dropdown.Item key="1dKinematics">1d Kinematics</Dropdown.Item>
-          <Dropdown.Item key="2dKinematics">2d Kinematics</Dropdown.Item>
+          <Dropdown.Item key="physics/1d-kinematics">
+            1d Kinematics
+          </Dropdown.Item>
+          <Dropdown.Item key="physics/2d-kinematics">
+            2d Kinematics
+          </Dropdown.Item>
         </Dropdown.Section>
         <Dropdown.Section title={"Forces"}>
           <Dropdown.Item key="placeholder1">To add</Dropdown.Item>
@@ -99,14 +122,7 @@ function PhysicsDropdown({ selection }: DropdownProps) {
   );
 }
 
-function MathDropdown() {
-  const [selected, setSelected] = React.useState(new Set(["text"]));
-
-  const selectedValue = React.useMemo(
-    () => Array.from(selected).join(", ").replaceAll("_", " "),
-    [selected]
-  );
-
+function MathDropdown({ action }: DropdownProps) {
   return (
     <Dropdown isBordered>
       <Dropdown.Button
@@ -121,7 +137,7 @@ function MathDropdown() {
       >
         Math
       </Dropdown.Button>
-      <Dropdown.Menu>
+      <Dropdown.Menu disabledKeys={disabledKeys} onAction={action}>
         <Dropdown.Section title={"Derivatives"}>
           <Dropdown.Item key="placeholder4">To add</Dropdown.Item>
           <Dropdown.Item key="placeholder5">To add</Dropdown.Item>
