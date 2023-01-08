@@ -22,7 +22,12 @@ export default function NavbarItem() {
     <Navbar maxWidth={"lg"} variant={"sticky"} shouldHideOnScroll={false}>
       <Navbar.Content>
         <Navbar.Brand>
-          <Text b>MathCalc</Text>
+          <Text
+            weight={"extrabold"}
+            color={"primary"}
+          >
+            MathCalc
+          </Text>
         </Navbar.Brand>
         <Navbar.Item>
           <PhysicsDropdown selection={selection} />
@@ -41,6 +46,8 @@ export default function NavbarItem() {
         <Navbar.Link
           hideIn={"xs"}
           href="https://github.com/LeoSM-07/MathCalc"
+          target={"_blank"}
+          rel={"noopener noreferrer"}
           isExternal
           underline
           color={"primary"}

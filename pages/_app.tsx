@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
-
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import Layout from "../components/Layout";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -30,7 +30,9 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <NextUIProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </NextUIProvider>
     </NextThemesProvider>
   );
