@@ -8,6 +8,7 @@ import {
   useInput,
   useTheme,
   Card,
+  Grid,
 } from "@nextui-org/react";
 import { Mafs, CartesianCoordinates } from "mafs";
 import styles from "../../styles/Home.module.css";
@@ -46,17 +47,15 @@ function ProjectileMotionBody() {
 
   const { type } = useTheme();
   return (
-    <Container gap={0.5}>
-      <Row data-theme={type}>
-        <Col className={styles.maths}>
-          <Mafs>
+      <Grid.Container>
+      <Grid sm data-theme={type}>
+         <Mafs>
             <text>{initialVelocity.value}</text>
             <CartesianCoordinates subdivisions={4} />
           </Mafs>
-        </Col>
-        <Spacer x={1} />
-        <Col>
-          <Container>
+        </Grid>
+        <Grid sm>
+        <Container>
             <Row>
               <Text h3>Input Variables</Text>
             </Row>
@@ -119,8 +118,7 @@ function ProjectileMotionBody() {
               <Spacer x={1} />
             </Row>
           </Container>
-        </Col>
-      </Row>
-    </Container>
+        </Grid>
+      </Grid.Container>
   );
 }

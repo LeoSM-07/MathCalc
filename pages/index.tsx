@@ -38,7 +38,7 @@ function HomeBody() {
   return (
     <>
       <Head>
-        <title>Projectile Motion</title>
+        <title>MathCalc</title>
       </Head>
       <div style={{display: "flex"}}>
         <Text h1 style={{marginInlineEnd: "0.5rem"}}>Welcome to</Text>
