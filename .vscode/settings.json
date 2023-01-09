@@ -5,8 +5,27 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "adipiscing",
+    "aliqua",
+    "aliquip",
+    "amet",
+    "commodo",
+    "consequat",
+    "dolore",
+    "eiusmod",
+    "elit",
+    "enim",
+    "incididunt",
+    "labore",
+    "laboris",
     "mathcalc",
     "mathquill",
-    "nextui"
+    "mathsteps",
+    "nextui",
+    "nostrud",
+    "quis",
+    "tempor",
+    "ullamco",
+    "veniam"
   ]
 }

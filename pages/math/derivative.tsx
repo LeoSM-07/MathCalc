@@ -29,7 +29,6 @@ const MathField = dynamic(() => import("../../components/Math/MathField"), {
   ssr: false,
 });
 
-import { parseTex, evaluateTex } from "tex-math-parser";
 export default function Derivative() {
   return (
     <>
@@ -71,7 +70,6 @@ function DerivativeBody() {
 
   // Raw Input Equation
   const [rawInputEquation, setRawInputEquation] = useState("\\sin(x)");
-  //
 
   return (
     <Container display={"grid"}>
