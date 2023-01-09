@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.yaml": "home-assistant"
+    "*.yml": "shellscript"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
