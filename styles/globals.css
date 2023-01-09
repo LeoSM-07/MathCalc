@@ -1,11 +1,15 @@
+@import "computer-modern/cmu-serif.css";
+
+.MafsView {
+  font-family: inherit;
+}
+
 [data-theme="dark"] .MafsView {
   display: block;
   background: var(--mafs-bg);
   overflow: hidden;
   -webkit-user-select: none;
   user-select: none;
-  font-family: inherit;
-  font-variant-numeric: tabular-nums;
 
   --mafs-bg: #16181a;
   --mafs-fg: white;
@@ -30,8 +34,6 @@
   overflow: hidden;
   -webkit-user-select: none;
   user-select: none;
-  font-family: inherit;
-  font-variant-numeric: tabular-nums;
 
   --mafs-bg: white;
   --mafs-fg: black;

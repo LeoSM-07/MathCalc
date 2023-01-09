@@ -16,7 +16,7 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "mafs": "^0.8.2",
+    "mafs": "^0.10.0",
     "mathjs": "^11.5.0",
     "next": "13.1.1",
     "next-themes": "^0.2.1",

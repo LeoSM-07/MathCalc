@@ -12,7 +12,7 @@ import { Text as MafsText } from "mafs";
 import {
   Mafs,
   CartesianCoordinates,
-  FunctionGraph,
+  Plot,
   labelPi,
   useMovablePoint,
   Theme,
@@ -22,12 +22,12 @@ import {
 } from "mafs";
 import * as math from "mathjs";
 import Head from "next/head";
-import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
+import dynamic from "next/dynamic";
+import React, { useState } from "react";
 
-const MathField = dynamic(() => import('../../components/Math/MathField'), {
+const MathField = dynamic(() => import("../../components/Math/MathField"), {
   ssr: false,
-})
+});
 
 import { parseTex, evaluateTex } from "tex-math-parser";
 export default function Derivative() {
@@ -62,7 +62,7 @@ function DerivativeBody() {
     return math.derivative("sin(x)", "x").evaluate({ x: x });
   };
 
-  const c = useMovablePoint([Math.PI/2, 1], {
+  const c = useMovablePoint([Math.PI / 2, 1], {
     constrain: "horizontal",
     color: `${Theme.orange}`,
   });
@@ -70,16 +70,16 @@ function DerivativeBody() {
   const point: Vector2 = [c.x, originalFunction(c.x)];
 
   // Raw Input Equation
-  const [rawInputEquation, setRawInputEquation] = useState("\\sin(x)")
-  // 
-  
+  const [rawInputEquation, setRawInputEquation] = useState("\\sin(x)");
+  //
+
   return (
     <Container display={"grid"}>
       <Row gap={0}>
         <Col data-theme={type}>
           <Card variant={"shadow"}>
             <Card.Body css={{ p: 0 }}>
-              <Mafs>
+              <Mafs pan={false}>
                 <CartesianCoordinates
                   subdivisions={0}
                   xAxis={{
@@ -92,7 +92,7 @@ function DerivativeBody() {
                     subdivisions: 0,
                   }}
                 />
-                <FunctionGraph.OfX y={originalFunction} color={Theme.blue} />
+                <Plot.OfX y={originalFunction} color={Theme.blue} />
                 {c.element}
                 <Point x={point[0]} y={point[1]} color={Theme.orange} />
                 <Line.PointSlope
@@ -101,10 +101,10 @@ function DerivativeBody() {
                   color={Theme.orange}
                 />
                 <MafsText x={Math.PI + 0.9} y={-3.2} attach={"w"} size={18.2}>
-                  f(x) = ({point[0].toFixed(3)}, {point[1].toFixed(3)})
+                  f(x)=({point[0].toFixed(3)}, {point[1].toFixed(3)})
                 </MafsText>
                 <MafsText x={Math.PI + 0.9} y={-2.7} attach={"w"}>
-                  {`f'(x) = ${derivative(point[0]).toFixed(3)}`}
+                  {`f'(x)=${derivative(point[0]).toFixed(3)}`}
                 </MafsText>
               </Mafs>
             </Card.Body>
@@ -116,7 +116,11 @@ function DerivativeBody() {
         <Spacer x={3} />
         <Col>
           <Text h2>Inputs:</Text>
-          <MathField text={rawInputEquation} setText={setRawInputEquation} prompt={"f(x) ="} />
+          <MathField
+            text={rawInputEquation}
+            setText={setRawInputEquation}
+            prompt={"f(x) ="}
+          />
           <Text>Raw Latex: {rawInputEquation}</Text>
           <Spacer y={2} />
           <Text h2>Outputs:</Text>
@@ -126,7 +130,6 @@ function DerivativeBody() {
     </Container>
   );
 }
-
 
 function ExplanationSection() {
   return (
